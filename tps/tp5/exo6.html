@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TP5 - Exo 6 : Parallaxe</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* Parallax specific styles */
+        .parallax-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin: 40px 0;
+            border-radius: 12px;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: -40%;
+            left: 0;
+            width: 100%;
+            height: 180%;
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+        }
+
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .parallax-content h2 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 4px 15px rgba(226, 10, 10, 0.8);
+        }
+
+        /* Tutorial content */
+        .tutorial-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .tutorial-section h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin: 20px 0;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .bg-1 {
+            background-image: url("fete.jpg");
+        }
+
+        .bg-2 {
+            background-image: url("dj.jpg");
+        }
+
+        .bg-3 {
+            background-image: url("paysage.jpg");
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1> <a href="../../index.html" style="color:var(--accent-color); text-decoration:none;"></a> /
+                    TP5
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">← Retour Accueil</a></li>
+                    <li><a href="exo5.html">Exo 5 (Sticky)</a></li>
+                    <li><a href="exo6.html" class="active">Exo 6 (Parallaxe)</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="exercise-container">
+                <h1>TP5 - Exercice 6 : L'Effet Parallaxe</h1>
+                <p>Découvrez comment créer un effet de parallaxe avec JavaScript pour donner de la profondeur à vos
+                    pages web.</p>
+                <div class="parallax-section">
+                    <div class="parallax-bg bg-1" data-speed="0.5"></div>
+                    <div class="parallax-overlay"></div>
+                    <div class="parallax-content">
+                        <h2>Effet Parallaxe</h2>
+                    </div>
+                </div>
+                <div class="tutorial-section">
+                    <h3>Qu'est-ce que l'effet parallaxe ?</h3>
+                    <p>L'effet parallaxe est une technique qui crée une <strong>illusion de profondeur</strong> en
+                        faisant défiler différentes couches de contenu à des vitesses différentes.</p>
+                    <p>Lorsque vous scrollez, l'arrière-plan se déplace plus lentement que le premier plan, simulant
+                        ainsi la perception de profondeur que nous avons dans le monde réel.</p>
+                </div>
+                <div class="parallax-section">
+                    <div class="parallax-bg bg-2" data-speed="0.3"></div>
+                    <div class="parallax-overlay"></div>
+                    <div class="parallax-content">
+                        <h2>Comment ça marche ?</h2>
+                    </div>
+                </div>
+                <div class="tutorial-section">
+                    <h3>Technique d'implémentation</h3>
+                    <p>L'effet parallaxe utilise JavaScript pour contrôler la vitesse de défilement de différents
+                        éléments :</p>
+
+                    <ol class="step-list">
+                        <li><strong>Structure HTML</strong> : Créez des conteneurs avec des couches (background,
+                            overlay, content)</li>
+                        <li><strong>Attributs data</strong> : Ajoutez un attribut <code>data-speed</code> pour contrôler
+                            la vitesse</li>
+                        <li><strong>JavaScript</strong> : Écoutez l'événement scroll et calculez le déplacement</li>
+                        <li><strong>Transform CSS</strong> : Appliquez <code>translateY()</code> pour déplacer les
+                            éléments</li>
+                    </ol>
+
+                    <div class="code-block">// JavaScript pour l'effet parallaxe
+                        function initParallax() {
+                        const parallaxBgs = document.querySelectorAll('.parallax-bg');
+
+                        window.addEventListener('scroll', () => {
+                        parallaxBgs.forEach(bg => {
+                        const speed = bg.dataset.speed || 0.5;
+                        const section = bg.closest('.parallax-section');
+                        const rect = section.getBoundingClientRect();
+
+                        // Appliquer l'effet uniquement si visible
+                        if (rect.top < window.innerHeight && rect.bottom> 0) {
+                            const offset = window.pageYOffset;
+                            const yPos = -(offset * speed);
+                            bg.style.transform = `translateY(${yPos}px)`;
+                            }
+                            });
+                            });
+                            }
+
+                            initParallax();</div>
+                </div>
+                <div class="parallax-section">
+                    <div class="parallax-bg bg-3" data-speed="0.4"></div>
+                    <div class="parallax-overlay"></div>
+                    <div class="parallax-content">
+                        <h2>Applications</h2>
+                    </div>
+                </div>
+                <div class="tutorial-section">
+                    <h3>Cas d'usage de l'effet parallaxe</h3>
+                    <ul>
+                        <li><strong>Sites portfolios</strong> - Pour créer une navigation immersive et moderne</li>
+                        <li><strong>Pages produits</strong> - Pour mettre en valeur des caractéristiques</li>
+                        <li><strong>Storytelling</strong> - Pour raconter une histoire captivante de manière visuelle
+                        </li>
+                        <li><strong>Landing pages</strong> - Pour guider l'attention de l'utilisateur</li>
+                    </ul>
+                </div>
+                <div class="exercise-eval" style="display: flex; gap: 20px; margin-top: 40px;">
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #3498db;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Connaissances</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            JavaScript pour animations de scroll, manipulation du DOM, calcul de positions
+                            (<code>getBoundingClientRect()</code>, <code>pageYOffset</code>), transformations CSS
+                            (<code>translateY</code>), optimisation des performances.
+                        </p>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #f1c40f;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Difficulté</h4>
+                        <div style="color: #f1c40f; font-size: 1.2em; font-weight: bold;">★★★★☆ (4/5)</div>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #e74c3c;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Intérêt</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Technique essentielle pour créer des sites immersifs et modernes. Comprendre les calculs de
+                            scroll et l'optimisation des performances pour des animations fluides.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Effet parallaxe
+        function initParallax() {
+            const parallaxBgs = document.querySelectorAll('.parallax-bg');
+
+            function updateParallax() {
+                const scrolled = window.pageYOffset;
+
+                parallaxBgs.forEach(bg => {
+                    const speed = parseFloat(bg.dataset.speed) || 0.5;
+                    const section = bg.closest('.parallax-section');
+                    const rect = section.getBoundingClientRect();
+
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        const sectionTop = section.offsetTop;
+                        const offset = scrolled - sectionTop;
+                        const yPos = offset * speed;
+                        bg.style.transform = `translateY(${yPos}px)`;
+                    }
+                });
+            }
+
+            // Optimisation avec requestAnimationFrame
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            updateParallax();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initParallax);
+        } else {
+            initParallax();
+        }
+    </script>
+</body>
+
+</html>

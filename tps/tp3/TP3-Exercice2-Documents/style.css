@@ -1,0 +1,84 @@
+/* Base styles from professor */
+header {
+	background-color: yellow;
+	border-radius: 10px;
+	border: solid 1px #CCCCCC;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+header h1 {
+	margin: 0;
+}
+
+article {
+	background-color: cyan;
+	border-radius: 10px;
+	border: solid 1px #CCCCCC;
+	padding: 20px;
+}
+
+article p {
+	margin: 0;
+}
+
+footer {
+	background-color: orange;
+	border-radius: 10px;
+	border: solid 1px #CCCCCC;
+	display: flex;
+	padding: 10px;
+	margin-top: 10px;
+	gap: 10px;
+}
+
+footer div {
+	background-color: magenta;
+	border-radius: 10px;
+	border: solid 1px #CCCCCC;
+	padding: 20px;
+	flex: 1;
+}
+
+footer div p {
+	margin: 0;
+}
+
+/* Container */
+.container {
+	padding: 10px;
+}
+
+/* Main grid layout */
+main {
+	display: grid;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+
+/* Desktop: 3 columns (default, >960px) */
+main {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+/* Tablet: 2 columns (<960px) */
+@media (max-width: 960px) {
+	main {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	footer {
+		flex-direction: column;
+	}
+}
+
+/* Mobile: 1 column (<650px) */
+@media (max-width: 650px) {
+	main {
+		grid-template-columns: 1fr;
+	}
+
+	footer {
+		flex-direction: column;
+	}
+}

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 - Exo 2 : Flexbox</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            background-color: #eb4da0;
+            padding: 5px;
+        }
+
+        .row {
+            display: flex;
+            gap: 0;
+            background-color: #eb4da0;
+            padding: 5px;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            background-color: #eb4da0;
+            padding: 5px;
+        }
+
+        .item {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            border: 2px solid #eb4da0;
+        }
+
+        .header,
+        .footer {
+            background-color: #F16B08;
+            flex: 1;
+        }
+
+        .footer {
+            background-color: #31838F;
+        }
+
+        .side {
+            background-color: #B2F109;
+            flex: 1;
+        }
+
+        
+        .right {
+            background-color: #E8F571;
+        }
+
+        .center {
+            flex: 2;
+        }
+
+        
+
+        .c6 {
+            background-color: #0AF1AD;
+            height: 100px;
+        }
+
+        .c3 {
+            background-color: #23F109;
+            flex: 1;
+        }
+
+        .c4 {
+            background-color: #3050F0;
+            flex: 1;
+        }
+
+        .c5 {
+            background-color: #FBB5E9;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1> <a href="../../index.html" style="color:var(--accent-color); text-decoration:none;"></a> /
+                    TP2
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">← Retour Accueil</a></li>
+                    <li><a href="ex2_lines.html">Exo 2.1 (Lignes)</a></li>
+                    <li><a href="ex2_areas.html">Exo 2.2 (Areas)</a></li>
+                    <li><a href="ex2_flex.html" class="active">Exo 2.3 (Flex)</a></li>
+                    <li><a href="exo3.html">Exo 3 (Layout)</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="exercise-container">
+                <h1>TP2 - Exercice 2 : Flexbox</h1>
+
+                <div class="flex-container">
+                    <div class="item header">1 (Header)</div>
+
+                    <div class="row">
+                        <div class="item side">2 (Left)</div>
+                        <div class="col center">
+                            <div class="item c6">6</div>
+                            <div class="item c3">3</div>
+                            <div class="item c4">4</div>
+                            <div class="item c5">5</div>
+                        </div>
+                        <div class="item side right">7 (Right)</div>
+                    </div>
+
+                    <div class="item footer">8 (Footer)</div>
+                </div>                <div class="exercise-eval" style="display: flex; gap: 20px; margin-top: 40px;">
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #3498db;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Connaissances</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Imbrication de conteneurs Flexbox (Column > Row > Column) pour simuler une grille 2D.
+                            Utilisation de `flex: 1` pour la distribution d'espace.
+                        </p>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #f1c40f;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Difficulté</h4>
+                        <div style="color: #f1c40f; font-size: 1.2em; font-weight: bold;">★★★☆☆ (3/5)</div>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #e74c3c;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Intérêt</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Comprendre les limites du Flexbox pour les layouts 2D complexes par rapport à CSS Grid, mais
+                            aussi sa flexibilité pour l'alignement 1D.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

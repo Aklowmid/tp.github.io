@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TP1 - Exo 2 : Intégration HTML/CSS</title>
+    <link rel="stylesheet" href="../../css/style.css">    <link rel="stylesheet" href="TP1-Exercice2-Documents/style.css">    <style>
+        
+        .exercise-wrapper {
+            background-color: #eee;
+            padding: 20px;
+            min-height: 80vh;
+        }
+
+        
+        .exercise-wrapper body {
+            background: transparent !important;
+            padding: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1><a href="../../index.html" style="color:var(--accent-color); text-decoration:none;"></a> / TP1
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">← Retour Accueil</a></li>
+                    <li><a href="ex1.html">Exo 1 (Flexbox Cheat)</a></li>
+                    <li><a href="ex2.html" class="active">Exo 2 (Intégration)</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="exercise-container">
+                <h1 style="margin-bottom: 2rem;">TP1 - Exercice 2 : Intégration HTML/CSS</h1>                <div class="exercise-wrapper">                    <div id="page">
+                        <header>
+                            <p>Header content</p>
+                            <ul>
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                            </ul>
+                        </header>
+                        <div id="content">
+                            <section>
+                                <h1>Welcome to my awesome website.</h1>
+                                <h2>Indeed, this is an awesome website.</h2>
+                                <p><strong>Primary content.</strong> Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                    elit. Suspendisse pharetra, arcu in dapibus sagittis, felis leo rhoncus erat, non
+                                    porttitor urna libero vitae nibh. Ut convallis eros sed magna.</p>
+                                <img src="TP1-Exercice2-Documents/ressources/photo.jpg" alt="" />
+                                <p>Aenean enim purus, adipiscing a, vehicula ut, tempor vitae, justo. Nam laoreet mauris
+                                    vitae elit. Vivamus eros quam, euismod bibendum, pellentesque ut, tristique ut,
+                                    nisl. <a href="#">Vestibulum ante ipsum primis</a> in faucibus orci luctus et
+                                    ultrices posuere cubilia Curae; Suspendisse non metus. Nullam tempor dictum sapien.
+                                    Duis enim. In ligula. Cras ut enim. Sed dapibus ante in eros. Nulla facilisi. In
+                                    rhoncus eleifend nunc. Sed risus nulla, pretium in, porta eget, lacinia eu, nunc. In
+                                    hac habitasse platea dictumst. Vestibulum feugiat lectus et justo. Cum sociis
+                                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
+                                    aliquet dolor nec ipsum.</p>
+                                <h2>Oooh, more copy&hellip;</h2>
+                                <p><a href="#">Ut erat nibh</a>, aliquet ut, congue at, tempus in, nunc. Ut aliquet leo
+                                    et lectus volutpat molestie. Vivamus nunc. Nulla facilisi. Suspendisse dictum nunc
+                                    tempus elit. Nullam urna quam, bibendum quis, tincidunt a, nonummy euismod, metus.
+                                    Etiam convallis, dui venenatis feugiat elementum, justo lacus lobortis libero, vel
+                                    iaculis nibh lectus eu urna. Vivamus arcu. In facilisis quam et lacus. Suspendisse
+                                    sit amet neque ac enim lobortis ullamcorper. Etiam faucibus sapien ut nunc. Nullam
+                                    consectetuer vehicula arcu.</p>
+                            </section>
+                            <aside>
+                                <h3>Important Information</h3>
+                                <p><strong>Secondary content.</strong> Lorem ipsum dolor sit amet, consectetuer
+                                    adipiscing elit. Suspendisse pharetra, arcu in dapibus sagittis, felis leo rhoncus
+                                    erat, non porttitor urna libero vitae nibh. Ut convallis eros sed magna. Aenean enim
+                                    purus, adipiscing a, vehicula ut, tempor vitae, justo. Nam laoreet mauris vitae
+                                    elit. This is interesting information. Ut erat nibh, aliquet ut, congue at, tempus
+                                    in, nunc. Ut aliquet leo et lectus volutpat molestie. Vivamus nunc. <a
+                                        href="#">Read&nbsp;more&nbsp;&rarr;</a> </p>
+                            </aside>
+                        </div>
+                        <footer>
+                            <p>Photograph by <a href="#">Jin Bol</a>.</p>
+                        </footer>
+                    </div>                </div>                <div class="exercise-eval" style="display: flex; gap: 20px; margin-top: 40px;">
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #3498db;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Connaissances</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Intégration HTML/CSS fidèle à une maquette, manipulation des images, positionnement
+                            (float/flex), et sélecteurs CSS contextuels.
+                        </p>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #f1c40f;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Difficulté</h4>
+                        <div style="color: #f1c40f; font-size: 1.2em; font-weight: bold;">★★★☆☆ (3/5)</div>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #e74c3c;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Intérêt</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Apprendre la rigueur nécessaire pour transformer un design statique en code web fonctionnel
+                            et identique.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

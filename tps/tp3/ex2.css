@@ -1,0 +1,92 @@
+/* CSS Specific to TP3 Ex2 */
+
+.grid-container {
+    display: grid;
+    /* Desktop: 6 columns to allow splitting rows into 3 items (2+2+2) and 2 items (3+3) */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Times New Roman', serif;
+}
+
+.box {
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Header Box */
+.header-box {
+    grid-column: 1 / -1;
+    background-color: #ffff00;
+    color: black;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.header-box h1 {
+    margin: 0;
+}
+
+/* Cyan Boxes */
+.box.cyan {
+    grid-column: span 2;
+    /* 3 items per row on desktop (6/2=3) */
+    background-color: #00ffff;
+    color: black;
+    /* Orange border as seen in mockup */
+    border: 3px solid #ffa500;
+}
+
+/* Pink Boxes */
+.box.pink {
+    grid-column: span 3;
+    /* 2 items per row on desktop (6/3=2) */
+    background-color: #ff00ff;
+    color: black;
+    font-weight: bold;
+    /* Orange border */
+    border: 3px solid #ffa500;
+}
+
+/* Responsive: < 960px (Tablet) */
+@media (max-width: 960px) {
+    .grid-container {
+        /* Switch to 2 columns logic */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .box.cyan {
+        grid-column: span 1;
+        /* 2 items per row */
+    }
+
+    .box.pink {
+        grid-column: span 1;
+        /* 2 items per row */
+    }
+}
+
+/* Responsive: < 650px (Mobile) */
+@media (max-width: 650px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .box.cyan,
+    .box.pink {
+        grid-column: span 1;
+    }
+
+    .header-box h1 {
+        font-size: 1.5rem;
+    }
+}
