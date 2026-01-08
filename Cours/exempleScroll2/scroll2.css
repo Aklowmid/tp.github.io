@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+}
+
+p#scrollable {
+    width: 25vw;
+    height: 80vh;
+    border: solid 1px black;
+    left: 5vw;
+    top: 5vW;
+    padding: 10px;
+    overflow: scroll;
+    position: fixed;
+}
+
+#notscrollable {
+    width: 40vw;
+    margin-left: 35vw;
+    text-align: justify;
+}
+
+#zoneBoutons {
+    position: fixed;
+    top: 5vw;
+    left: 80vw;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+h1 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+button:nth-child(5), button:nth-child(6){
+    background-color: #FF5555;
+}
+

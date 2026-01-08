@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP4 - Exercice 1 : Sélecteurs & Target</title>
+    <link rel="stylesheet" href="../../css/style.css"> <style>
+        /* --- CSS SPÉCIFIQUE À L'EXERCICE --- */
+        
+        /* 1. Mise en page des blocs (Consigne PDF) */
+        div[id^="paragraphe"] {
+            width: 600px;           /* Largeur fixe */
+            margin-left: 250px;     /* Décalage gauche */
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        /* Titres centrés */
+        div[id^="paragraphe"] h2 {
+            text-align: center;
+            border-bottom: 2px solid transparent; /* Prêt pour la couleur */
+        }
+
+        /* Bordure des paragraphes */
+        div[id^="paragraphe"] p {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: justify;
+            
+            /* 3. Disparition du flux (Consigne PDF) */
+            display: none; 
+        }
+
+        /* 2. Menu en position fixe (Consigne PDF) */
+        ul.menu-fixe {
+            position: fixed;
+            top: 100px; /* Un peu plus bas que le header du portfolio */
+            left: 20px;
+            width: 200px;
+            list-style: none;
+            padding: 0;
+            background: #eee;
+            border: 1px solid #999;
+        }
+
+        ul.menu-fixe li a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        /* --- INTERACTION SANS JS (:target) --- */
+
+        /* 4. Afficher le paragraphe quand son parent est ciblé */
+        div[id^="paragraphe"]:target p {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- COULEURS DYNAMIQUES (Consigne PDF) --- */
+        /* On utilise l'ID pour cibler précisément chaque cas */
+
+        /* Cas 1 : Clic sur Paragraphe 1 (Rouge) */
+        div#paragraphe1:target h2 { color: #e74c3c; border-color: #e74c3c; }
+        div#paragraphe1:target p { border-color: #e74c3c; box-shadow: 0 0 10px rgba(231, 76, 60, 0.2); }
+        /* Astuce : On ne peut pas colorer le lien du menu cliqué en CSS pur ici sans structure parent/enfant, 
+           mais on a coloré le titre et la bordure comme demandé. */
+
+        /* Cas 2 : Clic sur Paragraphe 2 (Vert) */
+        div#paragraphe2:target h2 { color: #27ae60; border-color: #27ae60; }
+        div#paragraphe2:target p { border-color: #27ae60; box-shadow: 0 0 10px rgba(39, 174, 96, 0.2); }
+
+        /* Cas 3 : Clic sur Paragraphe 3 (Bleu) */
+        div#paragraphe3:target h2 { color: #2980b9; border-color: #2980b9; }
+        div#paragraphe3:target p { border-color: #2980b9; box-shadow: 0 0 10px rgba(41, 128, 185, 0.2); }
+
+    </style>
+</head>
+<body>
+
+    <div class="container" style="margin-top: 20px;">
+        <a href="../../index.html" class="btn">← Retour</a>
+    </div>
+
+    <main class="container">
+        <h1>TP 4 - Exo 1 : Menu Fixe & Target</h1>
+        <p>Cliquez sur le menu à gauche pour faire apparaître le contenu (Full CSS).</p>
+
+        <ul class="menu-fixe">
+            <li><a href="#paragraphe1">Paragraphe 1 (Rouge)</a></li>
+            <li><a href="#paragraphe2">Paragraphe 2 (Vert)</a></li>
+            <li><a href="#paragraphe3">Paragraphe 3 (Bleu)</a></li>
+        </ul>
+
+        <div id="paragraphe1">
+          <h2>Paragraphe 1</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac felis enim. Aenean varius augue nec leo viverra non eleifend neque interdum. Curabitur pretium dictum tortor, eget malesuada purus convallis sed. Morbi eget accumsan sapien. Phasellus ornare lacinia magna, et placerat justo dapibus at. Donec eleifend porttitor augue ut egestas. Vivamus porta aliquet lectus, vel fermentum diam consequat vel. Etiam pulvinar dignissim orci, non dapibus lectus fringilla a. Donec ligula dolor, fringilla nec porttitor nec, ultricies a purus.
+          </p>
+        </div>
+
+        <div id="paragraphe2">
+          <h2>Paragraphe 2</h2>
+          <p>
+            In hac habitasse platea dictumst. Sed et luctus mi. Maecenas non purus leo, vitae gravida purus. Duis feugiat nisi accumsan dolor vestibulum interdum quis a enim. Fusce luctus, ligula et aliquam viverra, leo risus hendrerit risus, vitae suscipit quam augue sed erat. Aliquam massa dolor, ultrices vel scelerisque at, accumsan at lectus. Vestibulum ac ornare libero. Integer metus elit, sodales in blandit at, laoreet vitae dui. Phasellus bibendum luctus arcu, eget laoreet risus facilisis id.
+          </p>
+        </div>
+
+        <div id="paragraphe3">
+          <h2>Paragraphe 3</h2>
+          <p>
+            Pellentesque sed orci tortor. Nam tincidunt purus in dui sollicitudin egestas. Curabitur laoreet, nisl id dapibus iaculis, odio neque ornare erat, sit amet tincidunt massa mi scelerisque risus. In iaculis urna et diam imperdiet cursus. Quisque imperdiet eros non nisi gravida euismod lobortis ipsum pellentesque. Aenean suscipit sem sed eros ultricies viverra rutrum ligula ornare. Phasellus ac faucibus justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+          </p>
+        </div>
+
+        <div style="height: 200px;"></div> </main>
+
+    <hr>
+    
+    <section class="container analyse-reflexive reveal">
+        <h2>Analyse</h2>
+        <div class="card">
+            <h3>La pseudo-classe :target</h3>
+            <p>
+                L'exercice démontre la puissance de <code>:target</code>. Cette pseudo-classe s'active uniquement sur l'élément dont l'ID correspond au fragment de l'URL (le #hash). 
+                Cela permet de créer des systèmes d'onglets ou d'affichage conditionnel (Show/Hide) sans écrire une seule ligne de JavaScript.
+            </p>
+        </div>
+    </section>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TP7 - Exo 1 : Figures Canvas</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+
+        canvas {
+            border: 1px solid #ddd;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1> <a href="../../index.html" style="color:var(--accent-color); text-decoration:none;">Portf.</a> /
+                    TP7
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">← Retour Accueil</a></li>
+                    <li><a href="ex1.html" class="active">Exo 1 (Figures)</a></li>
+                    <li><a href="ex3.html">Exo 3 (Rectangle)</a></li> <!-- Remplacé Ex2 -->
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="exercise-container">
+                <h1>TP7 - Exercice 1 : Dessin Canvas</h1>
+
+                <div class="canvas-grid">
+                    <div>
+                        <h3>(a) Cible</h3>
+                        <canvas id="canvasA" width="200" height="200"></canvas>
+                    </div>
+                    <div>
+                        <h3>(b) Poule</h3>
+                        <canvas id="canvasB" width="200" height="200"></canvas>
+                    </div>
+                    <div>
+                        <h3>(c) Damier</h3>
+                        <canvas id="canvasC" width="200" height="200"></canvas>
+                    </div>
+                    <div>
+                        <h3>(d) Courbe</h3>
+                        <canvas id="canvasD" width="200" height="200"></canvas>
+                    </div>
+                </div>
+
+                <hr style="margin: 60px 0; border: none; border-top: 2px solid #ddd;">
+
+                <!-- Question 2 : Canvas unique avec bouton de cycle -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <h2>Question 2 : Galerie Cyclique</h2>
+                    <p>Les 4 figures sont affichées dans le même canvas. Cliquez sur le bouton pour passer de l'une à
+                        l'autre.</p>
+
+                    <div style="margin: 30px auto; display: inline-block;">
+                        <canvas id="canvasCycle" width="200" height="200"
+                            style="border: 2px solid #333; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></canvas>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button id="btnNext"
+                            style="padding: 12px 30px; font-size: 16px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                            Figure Suivante →
+                        </button>
+                        <p style="margin-top: 15px; color: #666; font-style: italic;" id="figureLabel">Figure actuelle :
+                            Cible</p>
+                    </div>
+                </div>
+
+                <div class="exercise-eval" style="display: flex; gap: 20px; margin-top: 40px;">
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #3498db;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Connaissances</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Utilisation du <code>Canvas API</code> 2D, primitives graphiques (arcs, lignes, rectangles),
+                            boucles de rendu, gestion des coordonnées et du contexte graphique.
+                        </p>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #f1c40f;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Difficulté</h4>
+                        <div style="color: #f1c40f; font-size: 1.2em; font-weight: bold;">★★★☆☆ (3/5)</div>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #e74c3c;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Intérêt</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Apprentissage des bases du dessin vectoriel programmatique, crucial pour la dataviz et les
+                            jeux HTML5.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- (a) CIBLE (7-8 anneaux concentriques + centre rouge) ---
+        const ctxA = document.getElementById('canvasA').getContext('2d');
+        const cx = 100, cy = 100;
+
+        // Dessiner 7 anneaux concentriques alternés noir/blanc (du plus grand au plus petit)
+        const ringRadii = [90, 78, 66, 54, 42, 30, 18];
+
+        ringRadii.forEach((radius, index) => {
+            ctxA.beginPath();
+            ctxA.arc(cx, cy, radius, 0, Math.PI * 2);
+            ctxA.fillStyle = (index % 2 === 0) ? 'black' : 'white';
+            ctxA.fill();
+            ctxA.strokeStyle = 'black';
+            ctxA.lineWidth = 1;
+            ctxA.stroke();
+        });
+
+        // Centre rouge
+        ctxA.beginPath();
+        ctxA.arc(cx, cy, 10, 0, Math.PI * 2);
+        ctxA.fillStyle = 'red';
+        ctxA.fill();
+
+        // --- (b) POULE (coordonnées EXACTES basées sur l'image validée) ---
+        const ctxB = document.getElementById('canvasB').getContext('2d');
+
+        // Grille de fond
+        ctxB.strokeStyle = '#ddd';
+        ctxB.lineWidth = 0.5;
+        for (let i = 0; i <= 200; i += 20) {
+            ctxB.beginPath(); ctxB.moveTo(i, 0); ctxB.lineTo(i, 200); ctxB.stroke();
+            ctxB.beginPath(); ctxB.moveTo(0, i); ctxB.lineTo(200, i); ctxB.stroke();
+        }
+
+        // DESSIN EXACT
+        ctxB.strokeStyle = 'black';
+        ctxB.lineWidth = 2;
+
+        ctxB.beginPath();
+
+        // 1. Crête Zigzag (x=60->80, y=40)
+        ctxB.moveTo(60, 40);
+        ctxB.lineTo(65, 35); ctxB.lineTo(70, 40);
+        ctxB.lineTo(75, 35); ctxB.lineTo(80, 40);
+
+        // 2. Arrière Tête (diagonale)
+        ctxB.lineTo(100, 60);
+
+        // 3. Dos (plat)
+        ctxB.lineTo(140, 60);
+
+        // 4. Queue (montée puis zigzag)
+        ctxB.lineTo(160, 40); // Haut queue
+        ctxB.lineTo(150, 50); ctxB.lineTo(160, 60); // Pointe 1
+        ctxB.lineTo(150, 70); ctxB.lineTo(160, 80); // Pointe 2
+
+        // 5. Bas arrière (diagonale rentrante)
+        ctxB.lineTo(140, 100);
+
+        // 6. Croupion (diagonale vers ventre)
+        ctxB.lineTo(120, 120);
+
+        // 7. Ventre (plat)
+        ctxB.lineTo(80, 120);
+
+        // 8. Poitrine (remontée diagonale)
+        ctxB.lineTo(60, 100);
+
+        // 9. Cou avant (vertical)
+        ctxB.lineTo(60, 60);
+
+        // 10. Bec dessous
+        ctxB.lineTo(40, 40); // Pointe bec
+
+        // 11. Bec dessus (retour crête)
+        ctxB.lineTo(60, 40);
+
+        ctxB.stroke();
+
+        // ŒIL
+        ctxB.beginPath();
+        ctxB.arc(70, 55, 3, 0, Math.PI * 2);
+        ctxB.fillStyle = 'black';
+        ctxB.fill();
+
+        // PATTES
+        ctxB.beginPath();
+        // Patte avant (part du ventre x=100)
+        ctxB.moveTo(100, 120); ctxB.lineTo(100, 145);
+        ctxB.moveTo(100, 145); ctxB.lineTo(90, 150); // Doigt
+        ctxB.moveTo(100, 145); ctxB.lineTo(100, 150); // Doigt milieu
+        ctxB.moveTo(100, 145); ctxB.lineTo(110, 150); // Doigt
+
+        // Patte arrière (part du croupion x=130 approx pour équilibre)
+        // Sur le modèle, la patte arrière part de l'angle (140,100) ou (120,120) ?
+        // Elle semble descendre du niveau y=100 ou y=120. Pour l'esthétique et stabilité :
+        ctxB.moveTo(130, 110); ctxB.lineTo(130, 145); // Part de la diagonale arrière
+        ctxB.moveTo(130, 145); ctxB.lineTo(120, 150);
+        ctxB.moveTo(130, 145); ctxB.lineTo(130, 150);
+        ctxB.moveTo(130, 145); ctxB.lineTo(140, 150);
+
+        ctxB.stroke();
+
+        // --- (c) DAMIER ---
+        const ctxC = document.getElementById('canvasC').getContext('2d');
+        const size = 25; // 8x8 cases sur 200px -> 25px
+        for (let y = 0; y < 8; y++) {
+            for (let x = 0; x < 8; x++) {
+                if ((x + y) % 2 === 0) {
+                    ctxC.fillStyle = 'black';
+                    ctxC.fillRect(x * size, y * size, size, size);
+                }
+            }
+        }
+        // Cadre
+        ctxC.strokeRect(0, 0, 200, 200);
+
+
+        // --- (d) COURBE (String Art) ---
+        const ctxD = document.getElementById('canvasD').getContext('2d');
+        const step = 5;
+        ctxD.strokeStyle = 'black';
+        ctxD.lineWidth = 0.5;
+        // La courbe est formée par des lignes reliant (0, y) à (x, 200) ??
+        // PDF Visuel: Coin haut gauche -> Bas Droite courbe
+        // Bas Gauche -> Haut Droite courbe inverse
+        // Supposons quart de cercle classique style "Beziers via lignes"
+
+        // Coin Haut-Gauche (0,0) vers Coin Bas-Droite (200,200)
+        // Axe X (Haut) -> Axe Y (Droite)
+        for (let i = 0; i <= 200; i += step) {
+            ctxD.beginPath();
+            ctxD.moveTo(i, 0); // part de haut x
+            ctxD.lineTo(200, i); // va à droite y
+            ctxD.stroke();
+
+            // symétrique
+            ctxD.beginPath();
+            ctxD.moveTo(0, i); // part de gauche y
+            ctxD.lineTo(i, 200); // va à bas x
+            ctxD.stroke();
+        }
+
+        // ==============================================
+        // QUESTION 2 : GALERIE CYCLIQUE (un seul canvas)
+        // ==============================================
+
+        const ctxCycle = document.getElementById('canvasCycle').getContext('2d');
+        const btnNext = document.getElementById('btnNext');
+        const figureLabel = document.getElementById('figureLabel');
+
+        let currentFigure = 0;
+        const figureNames = ['Cible', 'Poule', 'Damier', 'Courbe'];
+
+        // Fonctions de dessin pour chaque figure
+        function drawTarget(ctx) {
+            ctx.clearRect(0, 0, 200, 200);
+            const cx = 100, cy = 100;
+            const ringRadii = [90, 78, 66, 54, 42, 30, 18];
+
+            ringRadii.forEach((radius, index) => {
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+                ctx.fillStyle = (index % 2 === 0) ? 'black' : 'white';
+                ctx.fill();
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            });
+
+            ctx.beginPath();
+            ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+        }
+
+        function drawChicken(ctx) {
+            ctx.clearRect(0, 0, 200, 200);
+
+            // Grille de fond légère
+            ctx.strokeStyle = '#ddd';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i <= 200; i += 20) {
+                ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 200); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(200, i); ctx.stroke();
+            }
+
+            // DESSIN EXACT (Même que Question 1)
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+
+            ctx.beginPath();
+
+            // 1. Crête Zigzag
+            ctx.moveTo(60, 40);
+            ctx.lineTo(65, 35); ctx.lineTo(70, 40);
+            ctx.lineTo(75, 35); ctx.lineTo(80, 40);
+
+            // 2. Arrière Tête
+            ctx.lineTo(100, 60);
+
+            // 3. Dos
+            ctx.lineTo(140, 60);
+
+            // 4. Queue
+            ctx.lineTo(160, 40);
+            ctx.lineTo(150, 50); ctx.lineTo(160, 60);
+            ctx.lineTo(150, 70); ctx.lineTo(160, 80);
+
+            // 5. Bas arrière
+            ctx.lineTo(140, 100);
+
+            // 6. Croupion
+            ctx.lineTo(120, 120);
+
+            // 7. Ventre
+            ctx.lineTo(80, 120);
+
+            // 8. Poitrine
+            ctx.lineTo(60, 100);
+
+            // 9. Cou avant
+            ctx.lineTo(60, 60);
+
+            // 10. Bec dessous
+            ctx.lineTo(40, 40);
+
+            // 11. Bec dessus
+            ctx.lineTo(60, 40);
+
+            ctx.stroke();
+
+            // ŒIL
+            ctx.beginPath();
+            ctx.arc(70, 55, 3, 0, Math.PI * 2);
+            ctx.fillStyle = 'black';
+            ctx.fill();
+
+            // PATTES
+            ctx.beginPath();
+            // Patte avant
+            ctx.moveTo(100, 120); ctx.lineTo(100, 145);
+            ctx.moveTo(100, 145); ctx.lineTo(90, 150);
+            ctx.moveTo(100, 145); ctx.lineTo(100, 150);
+            ctx.moveTo(100, 145); ctx.lineTo(110, 150);
+
+            // Patte arrière
+            ctx.moveTo(130, 110); ctx.lineTo(130, 145);
+            ctx.moveTo(130, 145); ctx.lineTo(120, 150);
+            ctx.moveTo(130, 145); ctx.lineTo(130, 150);
+            ctx.moveTo(130, 145); ctx.lineTo(140, 150);
+
+            ctx.stroke();
+        }
+
+        function drawCheckerboard(ctx) {
+            ctx.clearRect(0, 0, 200, 200);
+            const size = 25;
+
+            for (let y = 0; y < 8; y++) {
+                for (let x = 0; x < 8; x++) {
+                    if ((x + y) % 2 === 0) {
+                        ctx.fillStyle = 'black';
+                        ctx.fillRect(x * size, y * size, size, size);
+                    }
+                }
+            }
+
+            ctx.strokeRect(0, 0, 200, 200);
+        }
+
+        function drawCurve(ctx) {
+            ctx.clearRect(0, 0, 200, 200);
+            const step = 5;
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 0.5;
+
+            for (let i = 0; i <= 200; i += step) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(200, i);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(i, 200);
+                ctx.stroke();
+            }
+        }
+
+        const drawFunctions = [drawTarget, drawChicken, drawCheckerboard, drawCurve];
+
+        // Dessiner la première figure (Cible)
+        drawFunctions[currentFigure](ctxCycle);
+
+        // Événement sur le bouton
+        btnNext.addEventListener('click', () => {
+            currentFigure = (currentFigure + 1) % 4;
+            drawFunctions[currentFigure](ctxCycle);
+            figureLabel.textContent = `Figure actuelle : ${figureNames[currentFigure]}`;
+        });
+
+    </script>
+</body>
+
+</html>

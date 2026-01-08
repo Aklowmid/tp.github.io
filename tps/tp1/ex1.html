@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP1 - Exo 1 : Flexbox Cheatsheet</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .cheatsheet-main {
+            background-color: #333;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            color: #333;
+            /* Reset text color for inside boxes */
+        }
+
+        .replica-container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #c91f37;
+        }
+
+        /* --- Header Styling --- */
+        .replica-header {
+            background-color: #c91f37;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .replica-header .title-group {
+            text-align: left;
+        }
+
+        .replica-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .replica-header .subtitle {
+            font-size: 1rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Dash Boxes for Container */
+        .dash-boxes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dash-box {
+            border: 2px dashed white;
+            padding: 5px 20px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            text-align: left;
+            min-width: 250px;
+        }
+
+        /* Dash Box for Items */
+        .items-dash-box {
+            border: 2px dashed white;
+            padding: 10px 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .item-box {
+            background: white;
+            color: #c91f37;
+            border: 2px solid #c91f37;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 1.6rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* --- Tables Styling --- */
+        .replica-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .replica-table th {
+            background-color: #c91f37;
+            color: white;
+            padding: 12px 5px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: lowercase;
+            border: 1px solid white;
+        }
+
+        .replica-table td {
+            background-color: #e5e5e5;
+            padding: 15px 5px;
+            text-align: center;
+            vertical-align: top;
+            border: 1px solid white;
+        }
+
+        .replica-table ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .replica-table li {
+            margin: 6px 0;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .c-red {
+            color: #c91f37;
+        }
+
+        .c-cyan {
+            color: #008b8b;
+        }
+
+        .pink-label {
+            background-color: #ff9999 !important;
+            color: white;
+            font-weight: bold;
+            padding: 10px !important;
+            font-size: 0.9rem;
+        }
+
+        .red-header-cell {
+            background-color: #c91f37 !important;
+            color: white;
+            font-weight: bold;
+            text-transform: lowercase;
+            border-color: #c91f37 !important;
+        }
+
+        .grey-val-cell {
+            background-color: #e5e5e5;
+            color: #008b8b;
+            font-weight: bold;
+        }
+
+        /* --- Bottom Table --- */
+        .bottom-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .bottom-table td {
+            border: 1px solid #aaa;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .bottom-table .label {
+            background-color: #c91f37;
+            color: white;
+            width: 25%;
+            text-align: center;
+        }
+
+        .bottom-table .value {
+            background-color: #e5e5e5;
+            color: #c91f37;
+            width: 10%;
+            text-align: center;
+        }
+
+        .bottom-table .merged-grey {
+            background-color: #e5e5e5;
+            color: #008b8b;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 800px) {
+            .replica-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .replica-header .title-group {
+                text-align: center;
+            }
+
+            .dash-box,
+            .items-dash-box {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1> <a href="../../index.html" style="color:var(--accent-color); text-decoration:none;">Portf.</a> /
+                    TP1</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">← Retour Accueil</a></li>
+                    <li><a href="ex1.html" class="active">Exo 1 (Structure)</a></li>
+                    <li><a href="ex2.html">Exo 2 (Tableaux)</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="exercise-container">
+                <h2>Exercice 1 : Cheatsheet Flexbox</h2>
+
+                <div class="cheatsheet-main">
+                    <div class="replica-container">
+
+                        <!-- SECTION 1: FLEX CONTAINER -->
+                        <div class="section-block" style="border-bottom: 2px solid #c91f37;">
+                            <div class="replica-header">
+                                <div class="title-group">
+                                    <h2>FLEX CONTAINER</h2>
+                                    <span class="subtitle">(élément parent)</span>
+                                </div>
+                                <div class="dash-boxes-container">
+                                    <div class="dash-box">display: flex</div>
+                                    <div class="dash-box">display: inline-flex</div>
+                                </div>
+                            </div>
+
+                            <table class="replica-table">
+                                <thead>
+                                    <tr>
+                                        <th>flex-direction</th>
+                                        <th>flex-wrap</th>
+                                        <th>justify-content</th>
+                                        <th>align-items</th>
+                                        <th>align-content</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="2">
+                                            <ul>
+                                                <li class="c-red">row</li>
+                                                <li class="c-cyan">row-reverse</li>
+                                                <li class="c-cyan">column</li>
+                                                <li class="c-cyan">column-reverse</li>
+                                            </ul>
+                                        </td>
+                                        <td rowspan="2">
+                                            <ul>
+                                                <li class="c-red">no-wrap</li>
+                                                <li class="c-cyan">wrap</li>
+                                                <li class="c-cyan">wrap-reverse</li>
+                                            </ul>
+                                        </td>
+                                        <td class="pink-label">Axe principal (Main)</td>
+                                        <td class="pink-label" colspan="2">Axe secondaire (Cross)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <ul>
+                                                <li class="c-red">flex-start</li>
+                                                <li class="c-cyan">flex-end</li>
+                                                <li class="c-cyan">center</li>
+                                                <li class="c-cyan">space-between</li>
+                                                <li class="c-cyan">space-around</li>
+                                                <li class="c-cyan">space-evenly</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                <li class="c-cyan">flex-start</li>
+                                                <li class="c-cyan">flex-end</li>
+                                                <li class="c-cyan">center</li>
+                                                <li class="c-cyan">baseline</li>
+                                                <li class="c-red">stretch</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                <li class="c-cyan">flex-start</li>
+                                                <li class="c-cyan">flex-end</li>
+                                                <li class="c-cyan">center</li>
+                                                <li class="c-cyan">space-between</li>
+                                                <li class="c-cyan">space-around</li>
+                                                <li class="c-red">stretch</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="red-header-cell">flex-flow</td>
+                                        <td colspan="3" style="background: white; border: none;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="grey-val-cell">flex-direction + flex-wrap</td>
+                                        <td colspan="3" style="background: white; border: none;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- SECTION 2: FLEX ITEMS -->
+                        <div class="section-block">
+                            <div class="replica-header">
+                                <div class="title-group">
+                                    <h2>FLEX ITEMS</h2>
+                                    <span class="subtitle">(élément enfant)</span>
+                                </div>
+                                <div class="items-dash-box">
+                                    <div class="item-box">ITEM 1</div>
+                                    <div class="item-box">ITEM 2</div>
+                                    <div class="item-box">ITEM 3</div>
+                                </div>
+                            </div>
+
+                            <table class="bottom-table">
+                                <tr>
+                                    <td class="label">order</td>
+                                    <td class="value">0</td>
+                                    <td class="merged-grey"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">flex-grow</td>
+                                    <td class="value">0</td>
+                                    <td rowspan="3" class="merged-grey" style="color: #008b8b;">flex : 0 1 auto</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">flex-shrink</td>
+                                    <td class="value">1</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">flex-basis</td>
+                                    <td class="value">auto</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">align-self</td>
+                                    <td class="value">auto</td>
+                                    <td class="merged-grey"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Standardized Evaluation Section -->
+                <div class="exercise-eval" style="display: flex; gap: 20px; margin-top: 40px;">
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #3498db;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Connaissances</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Maîtrise des propriétés Flexbox de base (`justify-content`, `align-items`, `flex-direction`)
+                            pour structurer un document de référence (Cheatsheet).
+                        </p>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #f1c40f;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Difficulté</h4>
+                        <div style="color: #f1c40f; font-size: 1.2em; font-weight: bold;">★☆☆☆☆ (1/5)</div>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #e74c3c;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Intérêt</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Avoir une référence visuelle rapide pour le comportement des boîtes flexibles.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

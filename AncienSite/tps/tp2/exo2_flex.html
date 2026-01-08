@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>TP2 - Exo 2 : Flexbox</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* COULEURS */
+        #item1 { background-color: #F16B08; }
+        #item2 { background-color: #B2F109; }
+        #item3 { background-color: #23F109; }
+        #item4 { background-color: #3050F0; }
+        #item5 { background-color: #FBB5E9; }
+        #item6 { background-color: #0AF1AD; }
+        #item7 { background-color: #E8F571; }
+        #item8 { background-color: #31838F; }
+
+        /* FLEX LAYOUT */
+        #container {
+            display: flex;
+            flex-direction: column; /* Colonne principale (Haut -> Bas) */
+            gap: 10px;
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .row-milieu {
+            display: flex; /* Ligne horizontale pour les 3 colonnes */
+            gap: 10px;
+        }
+
+        .col-centre {
+            display: flex;
+            flex-direction: column; /* Colonne verticale pour le centre */
+            flex: 2; /* Prend 50% (2 parts) */
+            gap: 10px;
+        }
+
+        #item2, #item7 {
+            flex: 1; /* Prennent 25% chacun (1 part) */
+        }
+
+        /* Pour remplir la hauteur */
+        .item-box { padding: 20px; border: 1px solid #000; display:flex; align-items:center; justify-content:center; }
+        #item2, #item7, .col-centre > div { flex-grow: 1; }
+
+    </style>
+</head>
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <a href="../../index.html" class="btn">← Retour</a>
+    </div>
+
+    <main class="container">
+        <h1>TP 2 - Exo 2.3 : Flexbox</h1>
+        
+        <div id="container">
+            <div id="item1" class="item-box">Item 1 <br /> height : 50px</div>
+
+            <div class="row-milieu">
+                <div id="item2" class="item-box">Item 2 <br /> width : 25%</div>
+                
+                <div class="col-centre">
+                    <div id="item6" class="item-box">Item 6 <br /> width : 50%</div>
+                    <div id="item3" class="item-box">Item 3 <br /> height : 50px</div>
+                    <div id="item4" class="item-box">Item 4 <br /> height : 50px</div>
+                    <div id="item5" class="item-box">Item 5 <br /> height : 50px</div>
+                </div>
+
+                <div id="item7" class="item-box">Item 7 <br /> width : 25%</div>
+            </div>
+
+            <div id="item8" class="item-box">Item 8 <br /> height : 100px</div>
+        </div>
+
+        <section class="analyse-reflexive reveal" style="margin-top:40px">
+            <h2>Analyse</h2>
+            <div class="card">
+                <h3>Flexbox vs Grid</h3>
+                <p>Contrairement à Grid, Flexbox ne gère qu'une dimension à la fois. J'ai donc dû modifier le HTML pour imbriquer des conteneurs : une <code>div</code> pour la ligne du milieu, et une autre pour la colonne centrale. Cela prouve que Grid est plus adapté aux mises en page globales (2D).</p>
+            </div>
+        </section>
+    </main>
+    <script src="../../js/main.js"></script>
+</body>
+</html>

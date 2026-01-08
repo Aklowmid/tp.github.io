@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TP3 - Exo 1 : Media Queries</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .responsive-box {
+            width: 300px;
+            height: 200px;
+            background-color: blue;
+            margin: 20px auto;
+            transition: background-color 0.5s;
+        }
+
+        /* < 960px */
+        @media screen and (max-width: 960px) {
+            .responsive-box {
+                background-color: orange;
+            }
+        }
+
+        /* < 480px */
+        @media screen and (max-width: 480px) {
+            .responsive-box {
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1> <a href="../index.html" style="color:var(--accent-color); text-decoration:none;">Portf.</a> / TP3
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">← Retour Accueil</a></li>
+                    <li><a href="ex1.html" class="active">Exo 1 (Media Queries)</a></li>
+                    <li><a href="ex2.html">Exo 2 (Responsive Blocks)</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="exercise-container">
+                <h1>TP3 - Exo 1 : Media Queries simples</h1>
+                <p>La boîte change de couleur selon la largeur (Bleu > Orange > Violet).</p>
+                <div class="responsive-box"></div>
+                <!-- Standardized Evaluation Section -->
+                <div class="exercise-eval" style="display: flex; gap: 20px; margin-top: 40px;">
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #3498db;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Connaissances</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Utilisation des Media Queries (`@media screen`), définition de points de rupture
+                            (breakpoints) pour adapter l'interface (couleurs, dimensions).
+                        </p>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #f1c40f;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Difficulté</h4>
+                        <div style="color: #f1c40f; font-size: 1.2em; font-weight: bold;">★★☆☆☆ (2/5)</div>
+                    </div>
+
+                    <div class="eval-card"
+                        style="flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 4px solid #e74c3c;">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 15px; color: #2c3e50; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            Intérêt</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6; color: #666; margin: 0;">
+                            Comprendre le principe de base du Responsive Web Design : adapter le contenu à la largeur de
+                            la fenêtre.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

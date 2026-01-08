@@ -1,0 +1,29 @@
+header {
+	background-color : yellow;
+	border-radius : 10px;
+	border : solid 1px #CCCCCC;
+}
+
+article {
+	background-color : cyan;
+	border-radius : 10px;
+	border : solid 1px #CCCCCC;
+}
+
+footer {
+	background-color : orange;
+	border-radius : 10px;
+	border : solid 1px #CCCCCC;
+	display : flex;
+}
+
+footer div {
+	background-color : magenta;
+	border-radius : 10px;
+	border : solid 1px #CCCCCC;
+}
+
+
+
+
+

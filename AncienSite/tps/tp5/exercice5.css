@@ -1,0 +1,127 @@
+/* Reset basique pour enlever les marges par défaut du navigateur */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- LE HEADER STICKY --- */
+header {
+    /* C'est ici que la magie opère */
+    position: sticky;
+    top: 0; /* Colle l'élément tout en haut de la fenêtre */
+    
+    /* Design du header */
+    background-color: #2c3e50; /* Bleu foncé */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Ombre pour détacher le header du texte */
+    z-index: 1000; /* S'assure que le menu reste AU-DESSUS du texte */
+}
+
+/* Style du titre h1 */
+header h1 {
+    margin: 0;
+    padding: 10px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+/* --- LA NAVIGATION --- */
+nav ul {
+    list-style-type: none; /* Enlève les puces */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Met les items côte à côte */
+    justify-content: center; /* Centre les items */
+    background-color: #34495e; /* Couleur légèrement différente pour la barre de nav */
+}
+
+nav li {
+    margin: 0;
+}
+
+/* Style des liens */
+nav a, nav li {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Effet au survol de la souris */
+nav li:hover, nav a:hover {
+    background-color: #e74c3c; /* Rouge au survol */
+}
+
+/* --- LE CONTENU (TEXTE) --- */
+p {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto; /* Centre le bloc de texte */
+    text-align: justify;
+}
+
+/* ... (Garde ton CSS du menu sticky au dessus) ... */
+
+/* --- AJOUTS POUR LE PORTFOLIO (Car on ne peut pas lier style.css) --- */
+
+/* Style du bouton Retour */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2c3e50; /* Ou la couleur de ton portfolio */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #e74c3c;
+}
+
+/* Style de la section Analyse */
+.analyse-reflexive {
+    font-family: sans-serif;
+    max-width: 800px;
+    margin: 40px auto; /* Centrer */
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.analyse-reflexive h2 {
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 10px;
+    color: #2c3e50;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #e67e22;
+}
+
+code {
+    background-color: #eee;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+    color: #d35400;
+}

@@ -1,0 +1,129 @@
+/* Zone de présentation */
+.presentation-zone {
+    background-color: #eee;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* --- CONTENEUR PRINCIPAL (Inchangé) --- */
+.banner-container {
+    width: 728px;
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 15px rgba(46, 125, 50, 0.3); /* Ombre verte subtile */
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
+}
+
+/* --- 1. FOND NATURE (Vert dégradé herbe) --- */
+.banner-bg-nature {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Dégradé du vert foncé au vert clair */
+    background: linear-gradient(135deg, #2e7d32 0%, #81c784 100%);
+    z-index: 1;
+    animation: bgNaturePulse 6s infinite alternate ease-in-out;
+}
+
+@keyframes bgNaturePulse {
+    0% { filter: saturate(1); }
+    100% { filter: saturate(1.3); } /* Rend le vert plus vibrant */
+}
+
+/* --- 2. ICÔNE FEUILLE (CSS Shape) --- */
+.banner-icon-nature {
+    position: absolute;
+    left: -100px; /* Caché au début */
+    top: 15px;
+    z-index: 2;
+    /* Animation d'entrée fluide */
+    animation: slideInRotate 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.2s;
+}
+
+/* Création de la forme de feuille en CSS */
+.leaf-shape {
+    width: 50px;
+    height: 50px;
+    background-color: #a5d6a7; /* Vert très clair */
+    /* Astuce pour faire une goutte/feuille */
+    border-radius: 0 50% 50% 50%;
+    /* Rotation pour placer la pointe */
+    transform: rotate(45deg);
+    border: 3px solid #e8f5e9;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+@keyframes slideInRotate {
+    to { left: 40px; transform: rotate(360deg); } /* Entre en tournant */
+}
+
+/* --- 3. TEXTES --- */
+.text-group {
+    position: absolute;
+    left: 130px;
+    top: 22px;
+    z-index: 2;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Meilleure lisibilité sur fond coloré */
+}
+
+.txt-primary {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: dropIn 0.6s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+.txt-secondary {
+    font-size: 14px;
+    color: #e8f5e9; /* Blanc cassé vert */
+    opacity: 0;
+    transform: translateX(20px);
+    animation: fadeInRight 0.6s ease-out forwards;
+    animation-delay: 1.2s;
+    font-style: italic;
+}
+
+/* (Les keyframes dropIn et fadeInRight sont identiques à la version précédente, 
+   je les remets pour que le fichier soit complet) */
+@keyframes dropIn { to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeInRight { to { transform: translateX(0); opacity: 1; } }
+
+/* --- 4. BOUTON NATURE (Contraste chaud) --- */
+.cta-btn-nature {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+    z-index: 2;
+    /* Orange/Ocre pour contraster avec le vert et rappeler la nourriture */
+    background-color: #e67e22; 
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 0 #d35400; /* Ombre plus foncée */
+    opacity: 0;
+    transform: scale(0);
+    animation: 
+        popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+        pulseNature 2s infinite;
+    animation-delay: 1.8s;
+}
+
+@keyframes popIn { to { opacity: 1; transform: scale(1); } }
+
+@keyframes pulseNature {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); background-color: #f39c12; /* Devient plus clair */ }
+    100% { transform: scale(1); }
+}

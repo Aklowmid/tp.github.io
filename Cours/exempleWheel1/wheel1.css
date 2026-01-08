@@ -1,0 +1,23 @@
+body {
+    height: 200vh;
+    width: 200vw;
+    line-height: 3em;
+}
+
+div {
+    width: 20vw;
+    position: fixed;
+    left:40vw;
+    padding: 20px;
+    border: solid 2px black;
+    border-radius: 10px;
+    background-color: #777777;
+}
+
+#affichWheel {
+    top: 50px;
+}
+
+#affichScroll {
+    top: 250px;
+}

@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    width: 200vw;
+    height: 200vh;
+}
+
+div {
+    width: 30vw;
+    position: fixed;
+    left: 40vw;
+    background-color: #777777;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.4rem
+}
+
+#afficheWindow {
+    top: 50px;
+}
+
+#afficheWindow::first-line {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+#afficheP {
+    top: 550px;
+}
+
+#afficheP::first-line {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+p {
+    width: 30vw;
+    height: 80vh;
+    border: solid 1px black;
+    margin: 5vw;
+    padding: 10px;
+    overflow: scroll;
+}
+

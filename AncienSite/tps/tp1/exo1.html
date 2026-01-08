@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 1 - Exercice 1 : Flexbox Cheat Sheet</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <style>
+        /* CSS SPÉCIFIQUE À L'EXERCICE 1 (Reproduction du design) */
+        .flex-cheat-sheet {
+            font-family: sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        /* En-têtes rouges */
+        .header-section {
+            background-color: #D30030; /* Rouge vif */
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #fff;
+            margin-bottom: 5px;
+        }
+
+        .header-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .code-box {
+            border: 1px dashed white;
+            padding: 5px 10px;
+            font-family: monospace;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Tableaux de propriétés */
+        .prop-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 1px solid #D30030;
+            margin-bottom: 20px;
+        }
+
+        .col {
+            border-right: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+        }
+        .col:last-child { border-right: none; }
+
+        .col-header {
+            background-color: #D30030;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .col-content {
+            background-color: #E8F1F2; /* Gris/Bleu clair */
+            padding: 10px;
+            text-align: center;
+            flex-grow: 1;
+            font-size: 0.85rem;
+            color: #008080; /* Texte teal */
+        }
+        
+        .col-content span { display: block; margin: 3px 0; }
+        .bg-sub { background-color: #FFCDD2; color: #D30030; padding: 2px; display: block;} /* Rose clair pour les sous-titres */
+
+        /* Flex Items Visualisation */
+        .items-visual {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            background-color: #E8F1F2;
+            border: 1px solid #D30030;
+        }
+
+        .item-box {
+            background-color: white;
+            color: #D30030;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Bas de page (Propriétés enfants) */
+        .child-props {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            border: 1px solid #D30030;
+        }
+        .prop-row {
+            display: contents;
+        }
+        .prop-name {
+            background-color: #D30030;
+            color: white;
+            padding: 5px 15px;
+            border-bottom: 1px solid white;
+            font-size: 0.9rem;
+        }
+        .prop-value {
+            background-color: #eee;
+            padding: 5px 15px;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+            color: #D30030;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="margin-top: 30px; margin-bottom: 20px;">
+        <a href="../../index.html" class="btn">← Retour à l'accueil</a>
+    </div>
+
+    <main class="container">
+        
+        <section class="exercice-rendu">
+            
+            <div class="flex-cheat-sheet">
+                
+                <div class="header-section">
+                    <div class="header-title">
+                        FLEX CONTAINER<br>
+                        <span style="font-size:0.7em; font-weight:normal;">(élément parent)</span>
+                    </div>
+                    <div>
+                        <div class="code-box" style="margin-bottom:5px;">display: flex</div>
+                        <div class="code-box">display: inline-flex</div>
+                    </div>
+                </div>
+
+                <div class="prop-grid">
+                    <div class="col">
+                        <div class="col-header">flex-direction</div>
+                        <div class="col-content">
+                            <span>row</span>
+                            <span>row-reverse</span>
+                            <span>column</span>
+                            <span>column-reverse</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-header">flex-wrap</div>
+                        <div class="col-content">
+                            <span>nowrap</span>
+                            <span>wrap</span>
+                            <span>wrap-reverse</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-header">justify-content</div>
+                        <div class="col-content">
+                            <span class="bg-sub">Axe principal (Main)</span>
+                            <span>flex-start</span>
+                            <span>flex-end</span>
+                            <span>center</span>
+                            <span>space-between</span>
+                            <span>space-around</span>
+                            <span>space-evenly</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-header">align-items</div>
+                        <div class="col-content">
+                            <span class="bg-sub">Axe secondaire (Cross)</span>
+                            <span>flex-start</span>
+                            <span>flex-end</span>
+                            <span>center</span>
+                            <span>baseline</span>
+                            <span>stretch</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-header">align-content</div>
+                        <div class="col-content">
+                            <span>flex-start</span>
+                            <span>flex-end</span>
+                            <span>center</span>
+                            <span>space-between</span>
+                            <span>space-around</span>
+                            <span>stretch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-section">
+                    <div class="header-title">
+                        FLEX ITEMS<br>
+                        <span style="font-size:0.7em; font-weight:normal;">(élément enfant)</span>
+                    </div>
+                    <div style="flex-grow:1; display:flex; justify-content:flex-end; gap:10px;">
+                        <div class="item-box">ITEM 1</div>
+                        <div class="item-box">ITEM 2</div>
+                        <div class="item-box">ITEM 3</div>
+                    </div>
+                </div>
+
+                <div class="child-props">
+                    <div class="prop-row">
+                        <div class="prop-name">order</div>
+                        <div class="prop-value">0</div>
+                    </div>
+                    <div class="prop-row">
+                        <div class="prop-name">flex-grow</div>
+                        <div class="prop-value" style="grid-row: span 3; display:flex; align-items:center; justify-content:center;">
+                            flex: 0 1 auto
+                        </div>
+                    </div>
+                    <div class="prop-row">
+                        <div class="prop-name">flex-shrink</div>
+                        <div class="prop-value" style="display:none"></div> </div>
+                    <div class="prop-row">
+                        <div class="prop-name">flex-basis</div>
+                        <div class="prop-value" style="display:none"></div>
+                    </div>
+                    <div class="prop-row">
+                        <div class="prop-name">align-self</div>
+                        <div class="prop-value">auto</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <br><hr><br>
+
+        <section class="analyse-reflexive reveal">
+            <h2>Analyse de l'exercice</h2>
+            <div class="card">
+                <h3>1. Connaissances mises en jeu</h3>
+                <p>
+                    Cet exercice m'a permis de revoir la théorie fondamentale du module <strong>Flexbox</strong>. 
+                    J'ai dû structurer une mise en page complexe en utilisant des conteneurs Flex imbriqués pour reproduire le tableau. 
+                    J'ai manipulé les propriétés du parent (<code>justify-content</code>, <code>align-items</code>) et celles des enfants (<code>flex-grow</code>).
+                </p>
+
+                <h3>2. Niveau de difficulté (2/5)</h3>
+                <p>
+                    La difficulté n'était pas dans la logique Flexbox pure, mais dans la reproduction fidèle du design (couleurs, bordures, alignements) 
+                    en utilisant du CSS moderne sans utiliser de balises <code>&lt;table&gt;</code>, ce qui rend le code plus responsive.
+                </p>
+
+                <h3>3. Intérêt pédagogique & Qualité</h3>
+                <p>
+                    C'est un excellent mémo visuel. Le fait de devoir coder la "documentation" m'aide à mieux mémoriser les propriétés. 
+                    Le résultat est propre et fidèle à la maquette demandée, respectant la sémantique HTML.
+                </p>
+            </div>
+        </section>
+
+    </main>
+    
+    <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>TP2 - Exo 2 : Grid (Lignes)</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../css/style.css"> <style>
+        /* --- CSS FOURNI (COULEURS) --- */
+        #item1 { background-color: #F16B08; }
+        #item2 { background-color: #B2F109; }
+        #item3 { background-color: #23F109; }
+        #item4 { background-color: #3050F0; }
+        #item5 { background-color: #FBB5E9; }
+        #item6 { background-color: #0AF1AD; }
+        #item7 { background-color: #E8F571; }
+        #item8 { background-color: #31838F; }
+
+        /* --- TON TRAVAIL : GRID LAYOUT --- */
+        #container {
+            display: grid;
+            /* 3 colonnes : 25% | 50% | 25% */
+            grid-template-columns: 1fr 2fr 1fr;
+            /* Hauteurs automatiques */
+            grid-auto-rows: min-content;
+            gap: 10px;
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #container > div {
+            padding: 20px;
+            border: 1px solid #000;
+        }
+
+        /* --- PLACEMENT PAR LIGNES --- */
+        
+        /* HEADER (Ligne 1, prend toute la largeur) */
+        #item1 {
+            grid-column: 1 / 4;
+        }
+
+        /* GAUCHE (Ligne 2 à 6) */
+        #item2 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 6; /* S'étend sur la hauteur des 4 items centraux */
+        }
+
+        /* COLONNE CENTRALE (Empilement) */
+        #item6 { grid-column: 2 / 3; grid-row: 2 / 3; } /* En haut */
+        #item3 { grid-column: 2 / 3; grid-row: 3 / 4; }
+        #item4 { grid-column: 2 / 3; grid-row: 4 / 5; }
+        #item5 { grid-column: 2 / 3; grid-row: 5 / 6; } /* En bas */
+
+        /* DROITE (Ligne 2 à 6) */
+        #item7 {
+            grid-column: 3 / 4;
+            grid-row: 2 / 6;
+        }
+
+        /* FOOTER (Ligne 6, prend toute la largeur) */
+        #item8 {
+            grid-column: 1 / 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <a href="../../index.html" class="btn">← Retour</a>
+    </div>
+
+    <main class="container">
+        <h1>TP 2 - Exo 2.1 : Grid (Lignes)</h1>
+        <div id="container">
+            <div id="item1">Item 1 <br /> height : 50px</div>
+            <div id="item2">Item 2 <br /> width : 25%</div>
+            <div id="item3">Item 3 <br /> height : 50px</div>
+            <div id="item4">Item 4 <br /> height : 50px</div>
+            <div id="item5">Item 5 <br /> height : 50px</div>
+            <div id="item6">Item 6 <br /> width : 50%</div>
+            <div id="item7">Item 7 <br /> width : 25%</div>
+            <div id="item8">Item 8 <br /> height : 100px</div>
+        </div>
+
+        <section class="analyse-reflexive reveal" style="margin-top:40px">
+            <h2>Analyse</h2>
+            <div class="card">
+                <h3>Logique</h3>
+                <p>J'ai défini 3 colonnes (1fr 2fr 1fr) correspondant aux largeurs demandées (25% 50% 25%). La difficulté était de faire en sorte que les colonnes latérales (Item 2 et 7) s'étirent verticalement. J'ai utilisé <code>grid-row: 2 / 6</code> pour qu'ils couvrent exactement la hauteur des 4 blocs centraux.</p>
+            </div>
+        </section>
+    </main>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
